@@ -62,6 +62,8 @@ jobs:
 
           # Save credentials to environment for logging
           echo "RDP_CREDS=User: RDP | Password: $securePassword" >> $env:GITHUB_ENV
+          $githubEnv = "$env:GITHUB_ENV"
+          Add-Content -Path $githubEnv -Value "RDP_PASSWORD=$securePassword" -Encoding UTF8
         shell: powershell
 
       - name: Install Tailscale
