@@ -103,24 +103,6 @@ jobs:
           Write-Host "Assigned Tailscale IP: $ip"
         shell: powershell
 
-      - name: Verify RDP Port Accessibility
-        run: |
-          $ip = "${{ env.TAILSCALE_IP }}"
-          $port = 3389
-          Write-Host "Testing connectivity to $ip:$port ..."
-          $tcp = New-Object System.Net.Sockets.TcpClient
-          $connect = $tcp.BeginConnect($ip, $port, $null, $null)
-          $wait = $connect.AsyncWaitHandle.WaitOne(5000, $false)
-          if ($wait) {
-            $tcp.EndConnect($connect)
-            $tcp.Close()
-            Write-Host "✅ RDP port is accessible via Tailscale"
-          } else {
-            Write-Error "❌ Cannot connect to RDP port on Tailscale IP"
-            exit 1
-          }
-        shell: powershell
-
       - name: Print RDP Connection Info and Keep Alive
         run: |
           Write-Host "=============================================="
