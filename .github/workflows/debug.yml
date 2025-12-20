@@ -108,13 +108,13 @@ jobs:
       - name: Print RDP Connection Info and Keep Alive
         run: |
           Write-Host "=============================================="
-          Write-Host "🖥️  RDP Connection Details"
+          Write-Host "   RDP Connection Details"
           Write-Host "   Address : ${{ env.TAILSCALE_IP }}"
           Write-Host "   Username: RDP"
           Write-Host "   Password: $env:RDP_PASSWORD"
           Write-Host ""
-          Write-Host "💡 Connect using your Tailscale client (must be logged in to the same tailnet)"
-          Write-Host "⚠️  Remember to CANCEL this workflow when done to avoid unnecessary runner usage!"
+          Write-Host "   Connect using your Tailscale client (must be logged in to the same tailnet)"
+          Write-Host "   Remember to CANCEL this workflow when done to avoid unnecessary runner usage!"
           Write-Host "=============================================="
 
           while ($true) {
