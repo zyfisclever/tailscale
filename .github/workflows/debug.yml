@@ -67,7 +67,7 @@ jobs:
       - name: Install Tailscale
         run: |
           $ProgressPreference = 'SilentlyContinue'
-          Invoke-WebRequest -Uri "https://pkgs.tailscale.com/stable/tailscale-ipn-setup-1.82.0.exe" -OutFile "tailscale.exe"
+          Invoke-WebRequest -Uri "https://pkgs.tailscale.com/stable/tailscale-setup-1.82.0-amd64.msi" -OutFile "tailscale.exe"
           Start-Process -FilePath ".\tailscale.exe" -ArgumentList "/S" -Wait
           Remove-Item -Path "tailscale.exe" -Force
         shell: powershell
