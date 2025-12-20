@@ -111,15 +111,14 @@ jobs:
           Write-Host "🖥️  RDP Connection Details"
           Write-Host "   Address : ${{ env.TAILSCALE_IP }}"
           Write-Host "   Username: RDP"
-          Write-Host "   Password: $($env.RDP_CREDS -replace '.*Password: ', '')"
+          Write-Host "   Password: $env:RDP_PASSWORD"
           Write-Host ""
           Write-Host "💡 Connect using your Tailscale client (must be logged in to the same tailnet)"
           Write-Host "⚠️  Remember to CANCEL this workflow when done to avoid unnecessary runner usage!"
           Write-Host "=============================================="
 
-          # Keep the runner alive indefinitely (until manually cancelled)
           while ($true) {
             Write-Host "$(Get-Date): Runner is alive. Waiting... (Cancel workflow to stop)"
-            Start-Sleep -Seconds 300  # 5 minutes
+          Start-Sleep -Seconds 300
           }
         shell: powershell
